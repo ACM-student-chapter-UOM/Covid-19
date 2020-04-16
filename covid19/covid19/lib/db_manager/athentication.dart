@@ -75,7 +75,39 @@ class AuthenticationManager {
               });
         },
         codeAutoRetrievalTimeout: (String msg) {
-          print("TIMEOUT");
+          // print("TIMEOUT");
+          Navigator.of(context).pop();
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("TIMEOUT"),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text("Back"),
+                      textColor: Colors.white,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                    ),
+
+              FlatButton(
+                      child: Text("Resend"),
+                      textColor: Colors.white,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        await this.loginUser(phone, context);
+                      },
+                    )
+
+                  ],
+                );
+              });
         });
   }
 }

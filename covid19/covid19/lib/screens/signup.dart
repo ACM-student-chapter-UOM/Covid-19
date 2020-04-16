@@ -48,9 +48,9 @@ class Signup extends StatelessWidget {
                   child: Text("LOGIN"),
                   textColor: Colors.white,
                   padding: EdgeInsets.all(16),
-                  onPressed: () {
+                  onPressed: () async {
                     String phone = _phoneController.text.trim();
-                    authenticationManager.loginUser(phone, context);
+                    await authenticationManager.loginUser(phone, context);
                   },
                   color: Colors.blue,
                 ),
