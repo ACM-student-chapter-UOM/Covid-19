@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../db_manager/athentication.dart';
 
 class Signup extends StatelessWidget {
+  static const String id = "signup";
   final TextEditingController _phoneController = TextEditingController();
   final AuthenticationManager authenticationManager = AuthenticationManager();
   @override

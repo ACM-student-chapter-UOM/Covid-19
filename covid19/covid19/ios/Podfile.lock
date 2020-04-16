@@ -182,10 +182,8 @@ PODS:
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.12.0)
   - firebase_auth (0.0.1):
-    - Firebase/Auth (~> 6.3)
+    - Firebase/Auth (~> 6.0)
     - Firebase/Core
-    - Flutter
-  - firebase_auth_web (0.1.0):
     - Flutter
   - firebase_core (0.0.1):
     - Firebase/Core
@@ -294,8 +292,8 @@ PODS:
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - cloud_firestore_web (from `.symlinks/plugins/cloud_firestore_web/ios`)
+  - Firebase/Auth
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
-  - firebase_auth_web (from `.symlinks/plugins/firebase_auth_web/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_core_web (from `.symlinks/plugins/firebase_core_web/ios`)
   - Flutter (from `Flutter`)
@@ -331,8 +329,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/cloud_firestore_web/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
-  firebase_auth_web:
-    :path: ".symlinks/plugins/firebase_auth_web/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_core_web:
@@ -346,8 +342,7 @@ SPEC CHECKSUMS:
   cloud_firestore: 56ea1a42d4a4b3c9cf22e0e0f73140b5d07376a8
   cloud_firestore_web: 9ec3dc7f5f98de5129339802d491c1204462bfec
   Firebase: 32f9520684e87c7af3f0704f7f88042626d6b536
-  firebase_auth: f8287325aae894aff045dff38bf0667cbeb49563
-  firebase_auth_web: 0955c07bcc06e84af76b9d4e32e6f31518f2d7de
+  firebase_auth: d99b993c1405096e66c58211b1cd956c23eed1c5
   firebase_core: 0d8be0e0d14c4902953aeb5ac5d7316d1fe4b978
   firebase_core_web: d501d8b946b60c8af265428ce483b0fff5ad52d1
   FirebaseAnalytics: 83f822fd0d33a46f49f89b8c3ab16ab4d89df08a
@@ -370,6 +365,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: 00a87a883e4c3d24146f61b658142cd4dea089b9
 
 COCOAPODS: 1.9.1
