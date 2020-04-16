@@ -8,7 +8,7 @@ class AuthenticationManager {
     final _codeController = TextEditingController();
     _auth.verifyPhoneNumber(
         phoneNumber: phone,
-        timeout: Duration(seconds: 60),
+        timeout: Duration(seconds: 110),
         verificationCompleted: (AuthCredential credential) async {
           Navigator.of(context).pop();
 
