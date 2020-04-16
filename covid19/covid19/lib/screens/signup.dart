@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../db_manager/athentication.dart';
 
 class Signup extends StatelessWidget {
-  final _phoneController = TextEditingController();
-  AuthenticationManager authenticationManager = AuthenticationManager();
+  final TextEditingController _phoneController = TextEditingController();
+  final AuthenticationManager authenticationManager = AuthenticationManager();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +48,7 @@ class Signup extends StatelessWidget {
                   textColor: Colors.white,
                   padding: EdgeInsets.all(16),
                   onPressed: () {
-                    final phone = _phoneController.text.trim();
-
+                    String phone = _phoneController.text.trim();
                     authenticationManager.loginUser(phone, context);
                   },
                   color: Colors.blue,

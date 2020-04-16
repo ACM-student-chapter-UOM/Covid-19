@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "441598115754",
+    "firebase_url": "https://acm-covid-19-app.firebaseio.com",
+    "project_id": "acm-covid-19-app",
+    "storage_bucket": "acm-covid-19-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441598115754:android:e17b6fce50690db714b5d3",
+        "android_client_info": {
+          "package_name": "com.acmuom.covid19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441598115754-g6bt5isurk4js9vs9en2u9aijit0vum1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acmuom.covid19",
+            "certificate_hash": "3321a8c5ea2df0c10847073c9451aadd81c03188"
+          }
+        },
+        {
+          "client_id": "441598115754-tfgu0oopa2vsi1g3etnhm9vvliuerm0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSr1lbBOGMVQ8h3v4z8gpMSF5hQp0_UNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441598115754-tfgu0oopa2vsi1g3etnhm9vvliuerm0i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "441598115754-jc4s9vbgqlu1c0ejpv07oh5tppv5vikf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.acm.uom.covid19"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

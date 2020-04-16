@@ -1,7 +1,5 @@
-// import 'package:covid19/screens/homepage.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:covid19/screens/signup.dart';
 import 'package:flutter/material.dart';
-import './screens/signup.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +12,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: WelcomeScreen(),
         home: Signup());
   }
 }
