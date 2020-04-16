@@ -1,4 +1,4 @@
-package com.example.covid19
+package com.acmuom.covid19
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
