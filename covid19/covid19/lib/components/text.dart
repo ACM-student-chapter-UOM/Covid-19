@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class TextSmallWidget extends StatelessWidget {
@@ -28,9 +30,11 @@ class TextBoldWidget extends StatelessWidget {
     Key key,
     this.text,
     this.color,
+    this.fontsize
   }) : super(key: key);
   final String text;
   final Color color;
+  final double fontsize;
 
 
   @override
@@ -40,7 +44,7 @@ class TextBoldWidget extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: 'Manrope',
-        fontSize: 20.0,
+        fontSize: fontsize,
         fontWeight: FontWeight.w800,
         color: color),
     );
