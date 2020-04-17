@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class CRUDManager {
   final db = Firestore.instance;
 
   createData(String dbname, dynamic json) async {
     // add users and add detect bluetooth addresses
+    debugPrint("Ready to add the document");
     DocumentReference ref = await db.collection(dbname).add(json);
-    return ref.documentID;
+    // return ref.documentID;
   }
 
   void readData(String dbname, String id) async {
