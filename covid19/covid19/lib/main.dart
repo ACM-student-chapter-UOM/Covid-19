@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: WelcomeScreen(),
-      initialRoute: Signup.id,
+      initialRoute: WelcomeScreen.id,
       routes: {
         Signup.id: (context) => Signup(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
