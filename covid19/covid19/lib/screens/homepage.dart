@@ -56,7 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   text: ['PrecauTrace'],
                   textStyle: TextStyle(
                     color: Colors.black87,
-                    fontSize: 45.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.w900,
                   ),
                 ),

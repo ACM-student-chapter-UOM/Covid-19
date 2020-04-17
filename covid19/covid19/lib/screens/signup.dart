@@ -5,6 +5,7 @@ class Signup extends StatelessWidget {
   static const String id = "signup";
   final TextEditingController _phoneController = TextEditingController();
   final AuthenticationManager authenticationManager = AuthenticationManager();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +50,13 @@ class Signup extends StatelessWidget {
                   textColor: Colors.white,
                   padding: EdgeInsets.all(16),
                   onPressed: () async {
-                    String phone = _phoneController.text.trim();
-                    await authenticationManager.loginUser(phone, context);
+
+                    try {
+                      String phone = _phoneController.text.trim();
+                      await authenticationManager.loginUser(phone, context);
+                    } catch (e) {
+                      print(e);
+                    }
                   },
                   color: Colors.blue,
                 ),
