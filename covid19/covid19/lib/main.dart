@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
         accentColor: Color(0xff7abfe9),
       ),
       // home: InfoPage(),
+
+      // todo: add info page as the default router
       initialRoute: Signup.id,
       routes: {
         Signup.id: (context) => Signup(),
