@@ -1,6 +1,11 @@
 import 'package:covid19/screens/homepage.dart';
 import 'package:covid19/screens/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:covid19/screens/infopage.dart';
+
+import 'screens/infopage.dart';
+
+// import 'screens/infopage.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,9 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xff3994c3),
+        accentColor: Color(0xff7abfe9),
       ),
-      // home: WelcomeScreen(),
+      // home: InfoPage(),
+
+      // todo: add info page as the default router
       initialRoute: Signup.id,
       routes: {
         Signup.id: (context) => Signup(),
