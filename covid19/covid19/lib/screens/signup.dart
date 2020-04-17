@@ -50,6 +50,7 @@ class Signup extends StatelessWidget {
                   textColor: Colors.white,
                   padding: EdgeInsets.all(16),
                   onPressed: () async {
+
                     try {
                       String phone = _phoneController.text.trim();
                       await authenticationManager.loginUser(phone, context);
