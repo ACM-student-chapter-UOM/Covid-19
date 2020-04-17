@@ -26,7 +26,9 @@ dependencies:
   firebase_auth: ^0.14.0+5
   cloud_firestore: ^0.13.5
   animated_text_kit: ^2.0.0
-  workmanager: ^0.2.2
+  background_fetch: '^0.5.1'
+  shared_preferences: ^0.5.6+3
+  
 
 dev_dependencies:
   flutter_test:
