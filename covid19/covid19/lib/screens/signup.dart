@@ -6,10 +6,18 @@ import '../components/text.dart';
 import '../components/button.dart';
 import '../components/textform.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   static const String id = "signup";
+
+  @override
+  _SignupState createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
   final TextEditingController _phoneController = TextEditingController();
+
   final AuthenticationManager authenticationManager = AuthenticationManager();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -45,6 +53,7 @@ class Signup extends StatelessWidget {
                       SizedBox(
                         height: 16,
                       ),
+                      //* Enter the normal phone number without +94 (ex: 0112971859)
                       TextFormWidget(
                         controller: _phoneController,
                       ),
@@ -77,10 +86,23 @@ class Signup extends StatelessWidget {
                     onPressed: (() async {
                       if (_formKey.currentState.validate()) {
                         try {
-                          String phone = _phoneController.text.trim();
+                          //* Changed the phone number format to +94
+                          String phone = "+94"+_phoneController.text.trim().substring(1);
                           await authenticationManager.loginUser(phone, context);
                         } catch (e) {
-                          
+                          print(e);
+                          SnackBar(
+                            content: Text(
+                              'Something went wrong \n Try again'.toUpperCase(),
+                            ),
+                            duration: Duration(seconds: 10),
+                            action: SnackBarAction(
+                              label: 'Close',
+                              onPressed: () {
+                                Scaffold.of(context).hideCurrentSnackBar();
+                              },
+                            ),
+                          );
                         }
                       }
                     }),

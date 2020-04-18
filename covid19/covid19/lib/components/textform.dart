@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TextFormWidget extends StatelessWidget {
+class TextFormWidget extends StatefulWidget {
   TextFormWidget({@required this.controller});
   final TextEditingController controller;
 
+  @override
+  _TextFormWidgetState createState() => _TextFormWidgetState();
+}
+
+class _TextFormWidgetState extends State<TextFormWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,28 +41,38 @@ class TextFormWidget extends StatelessWidget {
             ),
             hintText: "Phone Number",
             hintStyle: TextStyle(
-                fontFamily: 'Manrope',
-                fontWeight: FontWeight.w800,
-                color: Theme.of(context).accentColor,
-                fontSize: 15),
+              fontFamily: 'Manrope',
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).accentColor.withOpacity(0.75),
+              fontSize: 15,
+            ),
           ),
+          
           keyboardType: TextInputType.phone,
+          cursorColor: Theme.of(context).accentColor,
+          style: TextStyle(
+            fontSize: 20,
+          ),
           validator: (value) {
             return _phoneNumberValidator(value);
           },
-          controller: controller,
+          controller: widget.controller,
         ),
+      
       ),
     );
+  
   }
 
   String _phoneNumberValidator(String number) {
+    print(number);
     try {
       int n = int.parse(number);
-      if (n.toString().length == 10) {
+      print(number);
+      if (number.length == 10) {
         return null;
       }
-      return 'Invalid Phone Number';
+      return 'Invalid Phone Number1';
     } catch (e) {
       return 'Invalid Phone Number';
     }

@@ -25,7 +25,7 @@ class InfoPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'images/info.jpg',
+                'images/info1.png',
                 fit: BoxFit.contain,
                 height: 190,
               ),

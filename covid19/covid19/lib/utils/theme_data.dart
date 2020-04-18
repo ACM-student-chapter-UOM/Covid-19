@@ -16,5 +16,6 @@ var themeData = ThemeData(
       color: Colors.white,
     ),
   ),
+  backgroundColor: Colors.white,
   fontFamily: 'Manrope',
 );
