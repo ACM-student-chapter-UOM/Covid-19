@@ -1,5 +1,5 @@
 import 'package:covid19/screens/homepage.dart';
-// import 'package:covid19/screens/signuppage.dart';
+import 'package:covid19/screens/otppage.dart';
 import 'package:covid19/screens/signup.dart';
 
 import 'package:flutter/material.dart';
@@ -19,16 +19,15 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xff3994c3),
         accentColor: Color(0xff7abfe9),
       ),
-      // home: InfoPage(),
 
       // todo: add info page as the default router
       initialRoute: InfoPage.id,
-      // initialRoute: Signup.id,
 
       routes: {
         InfoPage.id: (context) => InfoPage(),
         Signup.id: (context) => Signup(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
+        OtpPage.id: (context) => OtpPage()
       },
     );
   }
