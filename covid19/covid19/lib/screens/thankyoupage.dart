@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import '../components/app_bar.dart';
 import '../components/text.dart';
 import '../components/button.dart';
@@ -34,11 +35,23 @@ class ThankYouPage extends StatelessWidget {
             Column(
               children: <Widget>[
                 
-
-                ButtonWidget(
-                  onPressed: ()=>{},
+                Builder(
+                  builder: (BuildContext context) {
+                    return ButtonWidget(
+                      
                   text: "SHARE THE APP",
-                  ),
+                  onPressed:  () {
+                              
+                              final RenderBox box = context.findRenderObject();
+                              Share.share("text", //todo: add app url to this
+                                  // subject: subject,
+                                  sharePositionOrigin:
+                                      box.localToGlobal(Offset.zero) &
+                                          box.size);
+                            },
+                    );
+                  },
+                ),
                
                  UnderlinedButtonWidget(onPressed: ()=>{},text: "CLOSE",)
                   ]
