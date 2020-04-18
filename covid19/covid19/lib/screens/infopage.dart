@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import '../components/app_bar.dart';
 import '../components/text.dart';
 import '../components/button.dart';
-import './signup.dart';
+// import './signup.dart';
+// import 'signup.dart';
 
 class InfoPage extends StatelessWidget {
+  static const String id = "info";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,8 @@ class InfoPage extends StatelessWidget {
 
                 ButtonWidget(
                   onPressed: (){ 
-                    Navigator.push( context,MaterialPageRoute(builder: (context) => Signup()));
+                    // Navigator.push( context,MaterialPageRoute(builder: (context) => Signup()));
+                    Navigator.pushReplacementNamed(context, 'signup');
                     },
                   text: "I WANT TO GIVE A HAND",
                   ),

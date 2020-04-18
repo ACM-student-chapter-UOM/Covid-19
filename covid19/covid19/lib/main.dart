@@ -1,9 +1,9 @@
 import 'package:covid19/screens/homepage.dart';
+// import 'package:covid19/screens/signuppage.dart';
 import 'package:covid19/screens/signup.dart';
+
 import 'package:flutter/material.dart';
 import 'package:covid19/screens/infopage.dart';
-
-import 'screens/infopage.dart';
 
 // import 'screens/infopage.dart';
 
@@ -22,8 +22,11 @@ class MyApp extends StatelessWidget {
       // home: InfoPage(),
 
       // todo: add info page as the default router
-      initialRoute: Signup.id,
+      initialRoute: InfoPage.id,
+      // initialRoute: Signup.id,
+
       routes: {
+        InfoPage.id: (context) => InfoPage(),
         Signup.id: (context) => Signup(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
       },
