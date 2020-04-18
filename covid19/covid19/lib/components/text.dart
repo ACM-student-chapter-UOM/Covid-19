@@ -48,3 +48,44 @@ class TextBoldWidget extends StatelessWidget {
     );
   }
 }
+
+class TextwithIconWidget extends StatelessWidget {
+   TextwithIconWidget({
+     this.text,
+    this.color,
+    this.fontsize,
+    this.icon
+   });
+  final String text;
+  final Color color;
+  final double fontsize;
+  final Icon icon;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+        child:Row(
+          children: <Widget>[
+            
+            icon,
+
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Text(
+                text,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontFamily: 'Manrope',
+                  fontSize: fontsize,
+                  fontWeight: FontWeight.w700,
+                  color: color),
+    )         
+            )
+            
+          ],
+      )
+    );
+  }
+}
