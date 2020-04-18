@@ -10,7 +10,6 @@ class ButtonWidget extends StatelessWidget {
     return  Padding(
       padding: EdgeInsets.all(16.0),
       child: Container(
-      
         width: double.infinity,
         child: FlatButton(
           child: Text(text),
@@ -18,6 +17,9 @@ class ButtonWidget extends StatelessWidget {
           padding: EdgeInsets.all(16),
           onPressed: onPressed,
           color: Theme.of(context).primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
         )
     ),
     );

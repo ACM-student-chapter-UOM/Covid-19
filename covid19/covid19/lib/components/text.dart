@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TextSmallWidget extends StatelessWidget {
-   const TextSmallWidget({
+  const TextSmallWidget({
     Key key,
     this.text,
     this.color,
+    this.size = 12,
   }) : super(key: key);
   final String text;
   final Color color;
-
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +19,19 @@ class TextSmallWidget extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Manrope',
         fontWeight: FontWeight.w400,
-        color: color),
+        color: color,
+        fontSize: size
+      ),
     );
   }
 }
 
 class TextBoldWidget extends StatelessWidget {
-   const TextBoldWidget({
-    Key key,
-    this.text,
-    this.color,
-    this.fontsize
-  }) : super(key: key);
+  const TextBoldWidget({Key key, this.text, this.color, this.fontsize})
+      : super(key: key);
   final String text;
   final Color color;
   final double fontsize;
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +39,10 @@ class TextBoldWidget extends StatelessWidget {
       text,
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontFamily: 'Manrope',
-        fontSize: fontsize,
-        fontWeight: FontWeight.w800,
-        color: color),
+          fontFamily: 'Manrope',
+          fontSize: fontsize,
+          fontWeight: FontWeight.w800,
+          color: color),
     );
   }
 }
