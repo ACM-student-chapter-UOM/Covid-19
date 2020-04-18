@@ -10,88 +10,88 @@ class Signup extends StatelessWidget {
   static const String id = "signup";
   final TextEditingController _phoneController = TextEditingController();
   final AuthenticationManager authenticationManager = AuthenticationManager();
+  final _formKey = GlobalKey<FormState>();
 
-  
   @override
   Widget build(BuildContext context) {
-      var appBar = AppBar(
-        title: AppBarTitle(),
-        
-        centerTitle: true,
-      );
-      var _pageSize = MediaQuery.of(context).size.height;
-      var _notifySize = MediaQuery.of(context).padding.top;
-      var _appBarSize = appBar.preferredSize.height;
-    
-
+    var appBar = AppBar(
+      title: AppBarTitle(),
+      centerTitle: true,
+    );
     return Scaffold(
-      appBar: appBar,   
-      body: SingleChildScrollView(
-      child:Container(
-         height: _pageSize - (_appBarSize + _notifySize),
-        child: Column(
-          
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-          children:<Widget>[
-            SizedBox(
-                  height: 16,
-                ),
-            Form(
+      appBar: appBar,
+      body: Padding(
+        padding: const EdgeInsets.only(
+          top: 20.0,
+          bottom: 8,
+          left: 8,
+          right: 8,
+        ),
+        child: SingleChildScrollView(
+          child: Container(
             child: Column(
-
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                TextBoldWidget(color: Theme.of(context).primaryColor, text:"ENTER YOUR MOBILE NUMBER",fontsize: 20,), 
-
-                
-                SizedBox(
-                  height: 16,
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      TextBoldWidget(
+                        color: Theme.of(context).primaryColor,
+                        text: "ENTER YOUR MOBILE NUMBER",
+                        fontsize: 16,
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      TextFormWidget(
+                        controller: _phoneController,
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      TextBoldWidget(
+                        color: Colors.black,
+                        text:
+                            "YOUR PHONE NUMBER WILL BE \n USED TO CONTACT YOU IF YOU  \n WHERE NEAR A CONFIRMED CASE",
+                        fontsize: 16,
+                      ),
+                    ],
+                  ),
                 ),
-
-                TextFormWidget(controller: _phoneController,),
-
-                SizedBox(
-                  height: 16,
+                Image.asset(
+                  'images/phone.png',
+                  fit: BoxFit.contain,
+                  height: 200,
                 ),
-                TextBoldWidget(color: Colors.black,text: "YOUR PHONE NUMBER WILL BE \n USED TO CONTACT YOU IF YOU  \n WHERE NEAR A CONFIRMED CASE", fontsize: 20,),
-              
+                SizedBox(
+                  height: 20,
+                ),
+                Column(children: <Widget>[
+                  TextSmallWidget(
+                    color: Theme.of(context).accentColor,
+                    text: "WE WILL SEND YOU OTP TO CONFIRM\nYOUR PHONE NUMBER",
+                  ),
+                  ButtonWidget(
+                    onPressed: (() async {
+                      if (_formKey.currentState.validate()) {
+                        try {
+                          String phone = _phoneController.text.trim();
+                          await authenticationManager.loginUser(phone, context);
+                        } catch (e) {
+                          
+                        }
+                      }
+                    }),
+                    text: "LOGIN",
+                  ),
+                ])
               ],
             ),
           ),
-            Image.asset(
-                'images/phone.png',
-                fit: BoxFit.contain,
-                height: 300,
-            ),
-
-            Column(
-              children: <Widget>[
-                TextSmallWidget(color: Theme.of(context).accentColor,text: "WE WILL SEND YOU OTP TO CONFIRM\nYOUR PHONE NUMBER",),
-             
-                 SizedBox(height: 10,),
-
-                ButtonWidget(
-                  onPressed: (() async {
-
-                    try {
-                      String phone = _phoneController.text.trim();
-                      await authenticationManager.loginUser(phone, context);
-                    } catch (e) {
-                      print(e);
-                    }
-                  }),
-                  text: "LOGIN",
-                ),
-                SizedBox(height: 10,),
-              ]
-            )
-                
-          
-          ]
         ),
       ),
-    ));
+    );
   }
 }
