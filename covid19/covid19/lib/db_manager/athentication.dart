@@ -33,11 +33,11 @@ class AuthenticationManager {
       },
       
       codeSent: (String verificationId, [int forceResendingToken]) {
-          var appBar = AppBar(
-            title: AppBarTitle(),
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-          );
+          // var appBar = AppBar(
+          //   title: AppBarTitle(),
+          //   automaticallyImplyLeading: false,
+          //   centerTitle: true,
+          // );
      
         showDialog(
             context: context,
