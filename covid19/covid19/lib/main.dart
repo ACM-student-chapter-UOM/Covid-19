@@ -6,6 +6,7 @@ import 'screens/signup.dart';
 import 'screens/thankyoupage.dart';
 import 'screens/verificationpage.dart';
 import 'utils/theme_data.dart';
+import 'screens/permissionpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         ThankYouPage.id: (context) => ThankYouPage(), // thank you page
         PermissionPage.id: (context) =>
             PermissionPage(), // bluetooth permission
+
       },
     );
   }

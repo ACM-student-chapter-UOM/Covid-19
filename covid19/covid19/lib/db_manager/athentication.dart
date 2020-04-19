@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../screens/permissionpage.dart';
-import '../screens/thankyoupage.dart';
 import '../screens/verificationpage.dart';
+
 
 class AuthenticationManager {
   Future<bool> loginUser(String phone, BuildContext context) async {
@@ -18,8 +18,9 @@ class AuthenticationManager {
         FirebaseUser user = result.user;
 
         if (user != null) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PermissionPage()));
+
+          Navigator.pushReplacementNamed(context, 'permission');
+
         } else {
           print("Error");
         }
@@ -30,7 +31,14 @@ class AuthenticationManager {
         print(exception.message);
         print('exception');
       },
+      
       codeSent: (String verificationId, [int forceResendingToken]) {
+          var appBar = AppBar(
+            title: AppBarTitle(),
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+          );
+     
         showDialog(
             context: context,
             barrierDismissible: false,

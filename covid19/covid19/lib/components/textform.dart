@@ -76,6 +76,87 @@ class _TextFormWidgetState extends State<TextFormWidget> {
   }
 }
 
+class PinCodeTextWidget extends StatefulWidget {
+  PinCodeTextWidget({@required this.controller});
+  final TextEditingController controller;
+  @override
+  _PinCodeTextWidgetState createState() => _PinCodeTextWidgetState();
+}
+
+class _PinCodeTextWidgetState extends State<PinCodeTextWidget> {
+  String text = "";
+   @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Container(
+        width: double.infinity,
+        child: TextFormField(
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              borderSide: BorderSide(color: Theme.of(context).accentColor),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              borderSide: BorderSide(color: Theme.of(context).errorColor),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              borderSide: BorderSide(color: Theme.of(context).errorColor),
+            ),
+            filled: true,
+            fillColor: Theme.of(context).accentColor.withOpacity(0.05),
+            hintStyle: TextStyle(
+              fontFamily: 'Manrope',
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).accentColor.withOpacity(0.75),
+              fontSize: 15,
+            ),
+          ),
+          
+          keyboardType: TextInputType.phone,
+          cursorColor: Theme.of(context).accentColor,
+          style: TextStyle(
+            fontSize: 20,
+          ),
+          validator: (value) {
+            return _pinNumberValidator(value);
+          },
+          controller: widget.controller,
+          onChanged: (String newVal) {
+            if(newVal.length <= 6){
+                text = newVal;
+            }else{
+                widget.controller.text = text;
+            }
+          }
+        ),
+      
+      ),
+    );
+  
+  }
+
+  String _pinNumberValidator(String number) {
+    print(number);
+    try {
+      int n = int.parse(number);
+      print(number);
+      if (number.length == 6) {
+        return null;
+      }
+      return 'Invalid pin';
+    } catch (e) {
+      return 'Invalid pin';
+    }
+  }
+}
+
 class PinTextWidget extends StatelessWidget {
   PinTextWidget({@required this.controller});
   final TextEditingController controller;
