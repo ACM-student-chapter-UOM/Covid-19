@@ -22,8 +22,7 @@ class AuthenticationManager {
         FirebaseUser user = result.user;
 
         if (user != null) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => WelcomeScreen()));
+          Navigator.pushReplacementNamed(context, 'permission');
         } else {
           print("Error");
         }
@@ -48,7 +47,7 @@ class AuthenticationManager {
             builder: (context) {
               return Scaffold(
           appBar: appBar,   
-          body: Container(
+          body: SingleChildScrollView(
                 
                 child: Column(
                   
@@ -75,15 +74,15 @@ class AuthenticationManager {
 
                         TextBoldWidget(color: Theme.of(context).primaryColor, text:phone,fontsize: 20,), 
 
-                        UnderlinedButtonWidget(onPressed: ()=>{},text: "CHANGE THE PHONE NUMBER",),
+                        UnderlinedButtonWidget(onPressed: (){
+                          Navigator.of(context).pop();
+                        },text: "CHANGE THE PHONE NUMBER",),
                         
                         SizedBox(
                           height: 16,
                         ),
 
-                        TextField(
-                          controller: _codeController,
-                        ),
+                        PinCodeTextWidget(controller:_codeController,),
                         SizedBox(
                           height: 16,
                         ),
@@ -114,12 +113,8 @@ class AuthenticationManager {
                           FirebaseUser user = result.user;
 
                           if (user != null) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => WelcomeScreen(),
-                              ),
-                            );
+                            Navigator.pushReplacementNamed(context, 'permission');
+
                           } else {
                             print("Error");
                           }
