@@ -24,6 +24,9 @@ class InfoPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+               SizedBox(
+                    height: 10,
+                ),
               Image.asset(
                 'images/info1.png',
                 fit: BoxFit.contain,
