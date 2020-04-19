@@ -1,5 +1,12 @@
-import 'package:covid19/screens/signup.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/homepage.dart';
+import 'screens/infopage.dart';
+import 'screens/otppage.dart';
+import 'screens/signup.dart';
+import 'utils/theme_data.dart';
+
+// import 'screens/infopage.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,10 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Signup());
+      title: 'Flutter Demo',
+      theme: themeData,
+      debugShowCheckedModeBanner: false,
+      // todo: add info page as the default router
+      initialRoute: OtpPage.id,
+      routes: {
+        InfoPage.id: (context) => InfoPage(),
+        Signup.id: (context) => Signup(),
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        OtpPage.id: (context) => OtpPage()
+      },
+    );
   }
 }
