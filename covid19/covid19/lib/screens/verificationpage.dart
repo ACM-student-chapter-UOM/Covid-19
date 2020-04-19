@@ -1,3 +1,4 @@
+import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ import '../components/app_bar.dart';
 import '../components/text.dart';
 import '../components/button.dart';
 import '../components/textform.dart';
+import '../utils/constants.dart';
 import 'permissionpage.dart';
 import 'signup.dart';
 
@@ -26,13 +28,46 @@ class VerificationPage extends StatelessWidget {
   final TextEditingController _controller4 = TextEditingController();
   final TextEditingController _controller5 = TextEditingController();
   final TextEditingController _controller6 = TextEditingController();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final verificationId;
-
   VerificationPage({this.verificationId});
 
   @override
   Widget build(BuildContext context) {
+    Future<void> invalidOTP() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Invalid OTP', style: kOtpErrorDialogBoxTextStyle),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text(
+                    'Please enter a valid OTP',
+                    style: kOtpErrorDialogBoxTextStyle,
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text(
+                  'OK',
+                  style: kOtpErrorDialogBoxTextStyle,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+            elevation: 10.0,
+            backgroundColor: Color(0xff3994c3),
+          );
+        },
+      );
+    }
     // final VerificationPageArguments args = ModalRoute.of(context).settings.arguments;
 
     var appBar = AppBar(
@@ -109,9 +144,39 @@ class VerificationPage extends StatelessWidget {
                           fontsize: 20,
                         ),
 
-                        UnderlinedButtonWidget(
-                          onPressed: () => {},
-                          text: "RESEND THE CODE",
+                        SizedBox(
+                          height: 15.0,
+                        ),
+
+                        ArgonTimerButton(
+                          initialTimer: 60, // Optional
+                          height: 50,
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          minWidth: MediaQuery.of(context).size.width * 0.30,
+                          color: Color(0xff3994c3),
+                          borderRadius: 5.0,
+                          child: Text(
+                            "Resend OTP",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          loader: (timeLeft) {
+                            return Text(
+                              "Resend in | $timeLeft",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            );
+                          },
+                          onTap: (startTimer, btnState) {
+                            if (btnState == ButtonState.Idle) {
+                              startTimer(60);
+                              //TODO:resend code btn logic needs to be added
+                            }
+                          },
                         ),
                       ],
                     ),
@@ -127,7 +192,6 @@ class VerificationPage extends StatelessWidget {
                           _controller4.text.trim() +
                           _controller5.text.trim() +
                           _controller6.text.trim();
-
                       print("\n\n\n\n$code\n\n\n\n");
 
                       try {
@@ -149,18 +213,14 @@ class VerificationPage extends StatelessWidget {
                           Navigator.pushReplacementNamed(context, Signup.id);
                         }
                       } catch (e) {
-                        SnackBar(
-                          content: Text(
-                            'Something went wrong \n Try again'.toUpperCase(),
-                          ),
-                          duration: Duration(seconds: 10),
-                          action: SnackBarAction(
-                            label: 'Close',
-                            onPressed: () {
-                              Scaffold.of(context).hideCurrentSnackBar();
-                            },
-                          ),
-                        );
+                        print('Error : $e');
+                        invalidOTP();
+                        _controller1.clear();
+                        _controller2.clear();
+                        _controller3.clear();
+                        _controller4.clear();
+                        _controller5.clear();
+                        _controller6.clear();
                       }
                     }),
                     text: "LOGIN",

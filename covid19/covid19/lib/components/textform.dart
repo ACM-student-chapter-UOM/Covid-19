@@ -64,7 +64,6 @@ class _TextFormWidgetState extends State<TextFormWidget> {
   String _phoneNumberValidator(String number) {
     print(number);
     try {
-      int n = int.parse(number);
       print(number);
       if (number.length == 10) {
         return null;
@@ -85,67 +84,62 @@ class PinCodeTextWidget extends StatefulWidget {
 
 class _PinCodeTextWidgetState extends State<PinCodeTextWidget> {
   String text = "";
-   @override
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20.0),
       child: Container(
         width: double.infinity,
         child: TextFormField(
-          decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              borderSide: BorderSide(color: Theme.of(context).accentColor),
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: Theme.of(context).accentColor),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: Theme.of(context).errorColor),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: Theme.of(context).errorColor),
+              ),
+              filled: true,
+              fillColor: Theme.of(context).accentColor.withOpacity(0.05),
+              hintStyle: TextStyle(
+                fontFamily: 'Manrope',
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).accentColor.withOpacity(0.75),
+                fontSize: 15,
+              ),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+            keyboardType: TextInputType.phone,
+            cursorColor: Theme.of(context).accentColor,
+            style: TextStyle(
+              fontSize: 20,
             ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              borderSide: BorderSide(color: Theme.of(context).errorColor),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              borderSide: BorderSide(color: Theme.of(context).errorColor),
-            ),
-            filled: true,
-            fillColor: Theme.of(context).accentColor.withOpacity(0.05),
-            hintStyle: TextStyle(
-              fontFamily: 'Manrope',
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).accentColor.withOpacity(0.75),
-              fontSize: 15,
-            ),
-          ),
-          
-          keyboardType: TextInputType.phone,
-          cursorColor: Theme.of(context).accentColor,
-          style: TextStyle(
-            fontSize: 20,
-          ),
-          validator: (value) {
-            return _pinNumberValidator(value);
-          },
-          controller: widget.controller,
-          onChanged: (String newVal) {
-            if(newVal.length <= 6){
+            validator: (value) {
+              return _pinNumberValidator(value);
+            },
+            controller: widget.controller,
+            onChanged: (String newVal) {
+              if (newVal.length <= 6) {
                 text = newVal;
-            }else{
+              } else {
                 widget.controller.text = text;
-            }
-          }
-        ),
-      
+              }
+            }),
       ),
     );
-  
   }
 
   String _pinNumberValidator(String number) {
     print(number);
     try {
-      int n = int.parse(number);
       print(number);
       if (number.length == 6) {
         return null;
