@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.acmuom.covid19">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -27,4 +28,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
+    <uses-sdk tools:overrideLibrary="io.github.edufolly.flutterbluetoothserial"/>
+    
 </manifest>

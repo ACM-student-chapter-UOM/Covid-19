@@ -27,6 +27,8 @@ dependencies:
   cloud_firestore: ^0.13.5
   animated_text_kit: ^2.0.0
   share: ^0.6.3+6
+  # The following gives the functionalities to work with bluetooth.
+  flutter_bluetooth_serial: ^0.2.2
 
 dev_dependencies:
   flutter_test:
