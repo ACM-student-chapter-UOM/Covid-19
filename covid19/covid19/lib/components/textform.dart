@@ -47,7 +47,6 @@ class _TextFormWidgetState extends State<TextFormWidget> {
               fontSize: 15,
             ),
           ),
-          
           keyboardType: TextInputType.phone,
           cursorColor: Theme.of(context).accentColor,
           style: TextStyle(
@@ -58,10 +57,8 @@ class _TextFormWidgetState extends State<TextFormWidget> {
           },
           controller: widget.controller,
         ),
-      
       ),
     );
-  
   }
 
   String _phoneNumberValidator(String number) {
@@ -80,51 +77,44 @@ class _TextFormWidgetState extends State<TextFormWidget> {
 }
 
 class PinTextWidget extends StatelessWidget {
-
   PinTextWidget({@required this.controller});
   final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    int maxLength= 1;
+    int maxLength = 1;
     String text = "";
 
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: Container(
-      
         width: 40.0,
-        child:  TextFormField(
-          decoration: InputDecoration(
+        child: TextFormField(
+            textInputAction: TextInputAction.next,
+            decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
-                  borderSide: BorderSide(color:Theme.of(context).accentColor)),
+                  borderSide: BorderSide(color: Theme.of(context).accentColor)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   borderSide: BorderSide(color: Theme.of(context).accentColor)),
               filled: true,
               fillColor: Colors.grey[100],
-              hintStyle:
-                TextStyle(
+              hintStyle: TextStyle(
                   fontFamily: 'Manrope',
                   fontWeight: FontWeight.w800,
                   color: Theme.of(context).accentColor,
-                  fontSize: 15
-                  ),
-                
-              ),
-          controller: controller,
-          onChanged: (String newVal) {
-            if(newVal.length <= maxLength){
+                  fontSize: 15),
+            ),
+            controller: controller,
+            onChanged: (String newVal) {
+              if (newVal.length <= maxLength) {
                 text = newVal;
-            }else{
+              } else {
                 controller.text = text;
-            }
-
-        }
-        ),
-    ),
+              }
+            }),
+      ),
     );
   }
-} 
-
+}
