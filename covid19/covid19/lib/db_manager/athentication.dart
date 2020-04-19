@@ -1,15 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../screens/permissionpage.dart';
 import '../screens/verificationpage.dart';
-
 
 class AuthenticationManager {
   Future<bool> loginUser(String phone, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.verifyPhoneNumber(
       phoneNumber: phone,
-      timeout: Duration(seconds: 110),
+      timeout: Duration(seconds: 60),
       verificationCompleted: (AuthCredential credential) async {
         Navigator.of(context).pop();
 
@@ -18,9 +16,7 @@ class AuthenticationManager {
         FirebaseUser user = result.user;
 
         if (user != null) {
-
           Navigator.pushReplacementNamed(context, 'permission');
-
         } else {
           print("Error");
         }
@@ -31,14 +27,7 @@ class AuthenticationManager {
         print(exception.message);
         print('exception');
       },
-      
       codeSent: (String verificationId, [int forceResendingToken]) {
-          var appBar = AppBar(
-            title: AppBarTitle(),
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-          );
-     
         showDialog(
             context: context,
             barrierDismissible: false,
@@ -47,7 +36,6 @@ class AuthenticationManager {
             });
       },
       codeAutoRetrievalTimeout: (String msg) {
-        // print("TIMEOUT");
         Navigator.of(context).pop();
         showDialog(
             context: context,
