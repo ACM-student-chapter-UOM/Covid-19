@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: themeData,
       debugShowCheckedModeBanner: false,
       // todo: add info page as the default router
-      initialRoute: OtpPage.id,
+      initialRoute: InfoPage.id,
       routes: {
         InfoPage.id: (context) => InfoPage(),
         Signup.id: (context) => Signup(),

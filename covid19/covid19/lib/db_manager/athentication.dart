@@ -20,14 +20,14 @@ class AuthenticationManager {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => WelcomeScreen()));
         } else {
-          print("Error");
+          debugPrint("Error");
         }
 
         //This callback would gets called when verification is done auto maticlly
       },
       verificationFailed: (AuthException exception) {
-        print(exception.message);
-        print('exception');
+        debugPrint(exception.message);
+        debugPrint('exception');
       },
       codeSent: (String verificationId, [int forceResendingToken]) {
         showDialog(
@@ -68,7 +68,7 @@ class AuthenticationManager {
                           ),
                         );
                       } else {
-                        print("Error");
+                        debugPrint("Error");
                       }
                     },
                   )
