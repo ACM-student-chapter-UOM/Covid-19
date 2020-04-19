@@ -87,7 +87,8 @@ class _SignupState extends State<Signup> {
                       if (_formKey.currentState.validate()) {
                         try {
                           //* Changed the phone number format to +94
-                          String phone = "+94"+_phoneController.text.trim().substring(1);
+                          String phone =
+                              "+94" + _phoneController.text.trim().substring(1);
                           await authenticationManager.loginUser(phone, context);
                         } catch (e) {
                           print(e);

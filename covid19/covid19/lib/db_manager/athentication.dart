@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import "../screens/homepage.dart";
+import '../screens/permissionpage.dart';
+import '../screens/thankyoupage.dart';
+import '../screens/verificationpage.dart';
 
 class AuthenticationManager {
   Future<bool> loginUser(String phone, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
-    final _codeController = TextEditingController();
     _auth.verifyPhoneNumber(
       phoneNumber: phone,
       timeout: Duration(seconds: 110),
@@ -18,7 +19,7 @@ class AuthenticationManager {
 
         if (user != null) {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => WelcomeScreen()));
+              MaterialPageRoute(builder: (context) => PermissionPage()));
         } else {
           print("Error");
         }
@@ -34,46 +35,7 @@ class AuthenticationManager {
             context: context,
             barrierDismissible: false,
             builder: (context) {
-              return AlertDialog(
-                title: Text("Give the code?"),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    TextField(
-                      controller: _codeController,
-                    ),
-                  ],
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text("Confirm"),
-                    textColor: Colors.white,
-                    color: Colors.blue,
-                    onPressed: () async {
-                      final code = _codeController.text.trim();
-                      AuthCredential credential =
-                          PhoneAuthProvider.getCredential(
-                              verificationId: verificationId, smsCode: code);
-
-                      AuthResult result =
-                          await _auth.signInWithCredential(credential);
-
-                      FirebaseUser user = result.user;
-
-                      if (user != null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => WelcomeScreen(),
-                          ),
-                        );
-                      } else {
-                        print("Error");
-                      }
-                    },
-                  )
-                ],
-              );
+              return VerificationPage(verificationId: verificationId);
             });
       },
       codeAutoRetrievalTimeout: (String msg) {

@@ -56,7 +56,6 @@ class InfoPage extends StatelessWidget {
                         "BY TURNING BLUETOOTH IN YOUR PHONE, \n WE CAN HELP YOU FASTER IF \n YOU HAD CLOSE \n CONTACT WITH A COVID-19 CASE.",
                     fontsize: 13,
                   ),
-                
                 ],
               ),
               Column(
@@ -65,7 +64,6 @@ class InfoPage extends StatelessWidget {
                     color: Theme.of(context).accentColor,
                     text:
                         "YOUR DATA WILL NOT BE ACCESSED \n UNLESS YOU WHERE NEAR A CONFORMED CASE",
-                    
                   ),
                   SizedBox(
                     height: 2,
